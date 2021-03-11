@@ -1,0 +1,39 @@
+*[] : 프로젝트 구조상 있어야하는 폴더, 소스들이 들어있는 폴더(just 폴더, 패키지 또는 소스는 아니라는뜻)
+*소스 : package([]가 없는 것) 
+      +code(*.java) 
+      +resource(*.xml, *.properties, *.yml)
+*빌드범위 : /src/main/java (pom.xml에 정의)
+*jar압축범위 : /src/webapp/classes & /src/webapp/lib
+
+*3단계 구조
+helloweb (1단계)
+   | ----------[/src] (2단계)
+   |              | ---[/main] (3단계)          // main폴더를 둔 이유 : 
+   |              |       |--- [/java]         // 소스폴더(Servlet)
+   |              |       |        |--- /com
+   |              |       |               |--- /bitacademy
+   |              |       |                         |--- /helloweb
+   |              |       |                                  |--- /Controller
+   |              |       |                                            |--- HelloServlet.java
+   |              |       |--- [/resource]
+   |              |       |--- [/webapp]
+   |              |       |         |--- index.jsp
+   |              |       |         |--- /WEB-INFO
+   |              |       |         |        |--- /classes
+   |              |       |                  |        |--- /com
+   |              |       |                  |               |--- /bitacademy
+   |              |       |                  |                         |--- /helloweb
+   |              |       |                  |                                  |--- /Controller
+   |              |       |                  |                                                     |--- HelloServlet.class
+   |              |       |                  |--- /lib
+   |              |       |                         |--- mysql-jdbc-connector.jar
+   |              | ---[/test] (3단계)          // 테스트코드(TDD를 위한)
+   |              |       |--- [/java]        
+   |              |       |        |--- /com
+   |              |       |               |--- /bitacademy
+   |              |       |                         |--- /helloweb
+   |              |       |                                  |--- /Controller
+   |              |       |                                            |--- /test (나중에 Junit테스트를 위해 필수적인 요소)
+   |              |       |                                                    |--- TestHelloServlet.java
+   |              |       |--- [/resource]
+                                    
