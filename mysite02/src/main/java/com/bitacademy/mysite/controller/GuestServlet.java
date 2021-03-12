@@ -29,7 +29,7 @@ public class GuestServlet extends HttpServlet {
 			GuestbookVo vo = new GuestbookVo();
 			vo.setName(name);
 			vo.setPassword(password);
-			vo.setContent(content);
+			vo.setContents(content);
 			new GuestbookDao().insert(vo);
 			WebUtil.redirect(request.getContextPath()+"/guestbook?a=list", request, response);
 		} else if ("delete".equals(action)) {

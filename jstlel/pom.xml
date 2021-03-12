@@ -7,17 +7,11 @@
 		<artifactId>servlet-practices</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>mysite02</artifactId>
+	<artifactId>jstlel</artifactId>
 	<packaging>war</packaging>
+
 	<dependencies>
-		<!-- mysql jdbc driver -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.21</version>
-		</dependency>
 		<!-- https://mvnrepository.com/artifact/jstl/jstl -->
-		<!-- jstl lib -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -26,7 +20,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>mysite02</finalName>
+		<finalName>jstlel</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -54,4 +48,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>
+

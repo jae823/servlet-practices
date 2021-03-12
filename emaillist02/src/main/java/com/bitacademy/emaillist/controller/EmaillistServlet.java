@@ -13,7 +13,7 @@ import com.bitacademy.emaillist.dao.EmaillistDao;
 import com.bitacademy.emaillist.vo.EmaillistVo;
 import com.bitacademy.web.mvc.WebUtil;
 
-@WebServlet("/EmaillistServlet")
+
 public class EmaillistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

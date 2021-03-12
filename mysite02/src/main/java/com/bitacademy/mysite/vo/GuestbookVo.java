@@ -3,7 +3,7 @@ package com.bitacademy.mysite.vo;
 public class GuestbookVo {
 	private Long no;
 	private String name;
-	private String content;
+	private String contents;
 	private String password;
 	private String dt;
 
@@ -26,11 +26,11 @@ public class GuestbookVo {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getContent() {
-		return content;
+	public String getContents() {
+		return contents;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setContents(String contents) {
+		this.contents = contents;
 	}
 	public String getDt() {
 		return dt;
@@ -43,7 +43,7 @@ public class GuestbookVo {
 	
 	@Override
 	public String toString() {
-		return "GuestbookVo [no=" + no + ", name=" + name + ", content=" + content + ", password=" + password + ", dt="
+		return "GuestbookVo [no=" + no + ", name=" + name + ", content=" + contents + ", password=" + password + ", dt="
 				+ dt + "]";
 	}
 

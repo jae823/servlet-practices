@@ -38,7 +38,7 @@ public class GuestbookDao {
 		try {
 			conn = getConnection();
 			//3. SQL 준비
-			String sql = "select no, name, content, reg_date from guestbook order by reg_date";
+			String sql = "select no, name, contents, reg_date from guestbook order by reg_date";
 			pstmt = conn.prepareStatement(sql);
 			//4. 바인딩(PreparedStatment가 아닐경우 값을 바인딩하는 처리가 필요하다)
 
@@ -54,7 +54,7 @@ public class GuestbookDao {
 				GuestbookVo vo = new GuestbookVo();
 				vo.setNo(no);
 				vo.setName(name);
-				vo.setContent(contents);
+				vo.setContents(contents);
 				vo.setDt(dt);
 				list.add(vo);
 			}
@@ -95,9 +95,7 @@ public class GuestbookDao {
 			//4. 바인딩(PreparedStatment가 아닐경우 값을 바인딩하는 처리가 필요하다)
 			pstmt.setString(1, vo.getName());
 			pstmt.setString(2, vo.getPassword());
-			String tmp = vo.getContent().replace("\r\n","<br>");
-			vo.setContent(tmp);
-			pstmt.setString(3, vo.getContent());
+			pstmt.setString(3, vo.getContents());
 			//5. SQL문 실행
 			int count = pstmt.executeUpdate();
 			//6. 결과
