@@ -9,9 +9,16 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <filter>
+    <display-name>EncodingFilter</display-name>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>com.bitacademy.mysite.web.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <servlet>
-    <description></description>
-    <display-name>MainServlet</display-name>
     <servlet-name>MainServlet</servlet-name>
     <servlet-class>com.bitacademy.mysite.controller.MainServlet</servlet-class>
     <init-param>
@@ -35,12 +42,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>GuestServlet</display-name>
-    <servlet-name>GuestServlet</servlet-name>
-    <servlet-class>com.bitacademy.mysite.controller.GuestServlet</servlet-class>
+    <display-name>GuestbookServlet</display-name>
+    <servlet-name>GuestbookServlet</servlet-name>
+    <servlet-class>com.bitacademy.mysite.controller.GuestbookServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>GuestServlet</servlet-name>
+    <servlet-name>GuestbookServlet</servlet-name>
     <url-pattern>/guestbook</url-pattern>
   </servlet-mapping>
   <servlet>
@@ -52,15 +59,5 @@
   <servlet-mapping>
     <servlet-name>BoardServlet</servlet-name>
     <url-pattern>/board</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>EncodingFilter</display-name>
-    <servlet-name>EncodingFilter</servlet-name>
-    <servlet-class>com.bitacademy.mysite.web.EncodingFilter</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>EncodingFilter</servlet-name>
-    <url-pattern>/*</url-pattern>
   </servlet-mapping>
 </web-app>
