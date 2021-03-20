@@ -12,7 +12,7 @@ import com.bitacademy.mysite.dao.GuestbookDao;
 import com.bitacademy.mysite.vo.GuestbookVo;
 import com.bitacademy.web.mvc.WebUtil;
 
-public class GuestServlet extends HttpServlet {
+public class GuestbookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,80 +1,90 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>mysite</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="${pageContext.request.contextPath }/assets/css/board.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/assets/css/board.css"
+	rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="container">
 		<c:import url='/WEB-INF/views/includes/header.jsp' />
 		<div id="content">
 			<div id="board">
-				<form id="search_form" action="" method="post">
-					<input type="text" id="kwd" name="kwd" value="">
-					<input type="submit" value="√£±‚">
+				<form id="search_form" action="${pageContext.request.contextPath }/board" method="post">
+					<input type="text" id="search" name="search" value="${search }"> 
+					<input type="submit" value="Ï∞æÍ∏∞">
 				</form>
+
 				<table class="tbl-ex">
 					<tr>
-						<th>π¯»£</th>
-						<th>¡¶∏Ò</th>
-						<th>±€æ¥¿Ã</th>
-						<th>¡∂»∏ºˆ</th>
-						<th>¿€º∫¿œ</th>
+						<th>Î≤àÌò∏</th>
+						<th>Ï†úÎ™©</th>
+						<th>Í∏ÄÏì¥Ïù¥</th>
+						<th>Ï°∞ÌöåÏàò</th>
+						<th>ÏûëÏÑ±Ïùº</th>
 						<th>&nbsp;</th>
-					</tr>				
-					<tr>
-						<td>3</td>
-						<td><a href="">ºº π¯¬∞ ±€¿‘¥œ¥Ÿ.</a></td>
-						<td>æ»¥Î«ı</td>
-						<td>3</td>
-						<td>2015-10-11 12:04:20</td>
-						<td><a href="" class="del">ªË¡¶</a></td>
 					</tr>
-					<tr>
-						<td>2</td>
-						<!-- <td><a href="" style='text-align:left; padding-left:${(vo.depth-1)*20}px' >µŒ π¯¬∞ ±€¿‘¥œ¥Ÿ.</a></td> -->
-						<!-- depth∞° 0∫∏¥Ÿ ≈¨∞ÊøÏ ¿ÃπÃ¡ˆ √ﬂ∞° -->
-						<td><a href="" style='text-align:left; padding-left:20px' ><img src='${pageContext.request.contextPath }/assets/images/reply.png'/>µŒ π¯¬∞ ±€¿‘¥œ¥Ÿ.</a></td>
-						<td>æ»¥Î«ı</td>
-						<td>3</td>
-						<td>2015-10-02 12:04:12</td>
-						<td><a href="" class="del">ªË¡¶</a></td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td><a href="" style='text-align:left; padding-left:40px' ><img src='${pageContext.request.contextPath }/assets/images/reply.png'/>√π π¯¬∞ ±€¿‘¥œ¥Ÿ.</a></td>
-						<td>æ»¥Î«ı</td>
-						<td>3</td>
-						<td>2015-09-25 07:24:32</td>
-						<td><a href="" class="del">ªË¡¶</a></td>
-					</tr>
+					<c:set var="count" value="${fn:length(list) }" />
+					<c:forEach items="${list }" var="vo" varStatus="status">
+						<tr>
+							<td>${count-status.index }</td>
+							<td><a href="${pageContext.request.contextPath }/board?a=view&no=${vo.no}" style="text-align:left; padding-left:${vo.depth * 40 }px">
+									<c:if test="${vo.depth >= 1 }">
+										<img src="${pageContext.request.contextPath }/assets/images/reply.png" />
+									</c:if>
+								${vo.title }</a></td>
+							<td>${vo.name }</td>
+							<td>${vo.hit_cnt }</td>
+							<td>${vo.reg_date }</td>
+							<c:choose>
+								<c:when test="${!empty authUser && authUser.no == vo.userNo }">
+									<td><a
+										href="${pageContext.request.contextPath }/board?a=delete&no=${vo.no}"
+										class="del">ÏÇ≠Ï†ú</a></td>
+								</c:when>
+								<c:otherwise>
+									<td>&nbsp;</td>
+								</c:otherwise>
+							</c:choose>
+						</tr>
+					</c:forEach>
 				</table>
-				
-				<!-- pager √ﬂ∞° -->
-				<!-- ¿Ã¿¸∆‰¿Ã¡ˆ/¥Ÿ¿Ω∆‰¿Ã¡ˆ∏¶ √ﬂ∞°«œ±‚ ¿ß«ÿº≠ ∆‰¿Ã¬°√º≈©√≥∏Æ -->
-				<!-- πÃ∏Æ ∞ËªÍ«— µ•¿Ã≈Õ∏¶ mapø° ¿˙¿Â«ÿº≠ ≥ª∑¡¡÷±‚ -->
+
+				<!-- pager Ï∂îÍ∞Ä -->
+				<!-- Ïù¥Ï†ÑÌéòÏù¥ÏßÄ/Îã§ÏùåÌéòÏù¥ÏßÄÎ•º Ï∂îÍ∞ÄÌïòÍ∏∞ ÏúÑÌï¥ÏÑú ÌéòÏù¥ÏßïÏ≤¥ÌÅ¨Ï≤òÎ¶¨ -->
+				<!-- ÎØ∏Î¶¨ Í≥ÑÏÇ∞Ìïú Îç∞Ïù¥ÌÑ∞Î•º mapÏóê Ï†ÄÏû•Ìï¥ÏÑú ÎÇ¥Î†§Ï£ºÍ∏∞ -->
 				<div class="pager">
 					<ul>
-						<li><a href="">¢∏</a></li>
-						<li><a href="/mysite02/board?p=1">1</a></li>
-						<li class="selected">2</li>
-						<li><a href="">3</a></li>
-						<li>4</li>
-						<li>5</li>
-						<li><a href="">¢∫</a></li>
+						<c:if test="${pageVo.nowPage > pageVo.cntPage/2 + 1 }">
+							<li><a href="${pageContext.request.contextPath }/board">‚óÄ</a></li>
+						</c:if>
+						<c:forEach begin="${pageVo.firstPageInCurrentPageGroup }" end="${pageVo.lastPageInCurrentPageGroup }" var="i" step="1">
+							<c:choose>
+								<c:when test="${i == pageVo.nowPage }">
+									<li class="selected"><a id="link" href="${pageContext.request.contextPath }/board?p=${i }&search=${search }">${i }</a></li>	
+								</c:when>
+								<c:otherwise>
+									<li><a id="link" href="${pageContext.request.contextPath }/board?p=${i }&search=${search }">${i }</a></li>	
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						<c:if test="${pageVo.lastPage > 5 && pageVo.nowPage != pageVo.lastPage }">
+							<li><a href="${pageContext.request.contextPath }/board?p=${pageVo.lastPage}">‚ñ∂</a></li>
+						</c:if>
 					</ul>
-				</div>					
-				<!-- pager √ﬂ∞° -->
-				
-				<div class="bottom">
-					<a href="${pageContext.request.contextPath }/board?a=writeform" id="new-book">±€æ≤±‚</a>
-				</div>				
+				</div>
+				<!-- pager Ï∂îÍ∞Ä -->
+				<c:if test="${!empty authUser }">
+					<div class="bottom">
+						<a href="${pageContext.request.contextPath }/board?a=writeform"
+							id="new-book">Í∏ÄÏì∞Í∏∞</a>
+					</div>
+				</c:if>
 			</div>
 		</div>
 		<c:import url='/WEB-INF/views/includes/navigation.jsp' />

@@ -17,6 +17,11 @@
 			<div id="board">
 				<form class="board-form" method="post" action="${pageContext.request.contextPath }/board">
 					<input type = "hidden" name = "a" value="write">
+					<input type = "hidden" name = "group_no" value="${param.group_no }" >
+					<input type = "hidden" name = "order_no" value="${param.order_no }" >
+					<input type = "hidden" name = "depth" value="${param.depth }" >
+					<input type = "hidden" name = "reply" value="${param.reply }" >
+					
 					<table class="tbl-ex">
 						<tr>
 							<th colspan="2">글쓰기</th>

@@ -5,11 +5,13 @@ public class BoardVo {
 	private String title;
 	private String content;
 	private String name;
-	private int hit;
+	private Long userNo;
+	private int hit_cnt;
 	private String reg_date;
 	private int group_no;
 	private int order_no;
 	private int depth;
+	private String del_gb;
 	
 	
 	public Long getNo() {
@@ -36,11 +38,17 @@ public class BoardVo {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getHit() {
-		return hit;
+	public Long getUserNo() {
+		return userNo;
 	}
-	public void setHit(int hit) {
-		this.hit = hit;
+	public void setUserNo(Long userNo) {
+		this.userNo = userNo;
+	}
+	public int getHit_cnt() {
+		return hit_cnt;
+	}
+	public void setHit_cnt(int hit_cnt) {
+		this.hit_cnt = hit_cnt;
 	}
 	public String getReg_date() {
 		return reg_date;
@@ -66,11 +74,16 @@ public class BoardVo {
 	public void setDepth(int depth) {
 		this.depth = depth;
 	}
-	
+	public String getDel_gb() {
+		return del_gb;
+	}
+	public void setDel_gb(String del_gb) {
+		this.del_gb = del_gb;
+	}
 	
 	@Override
 	public String toString() {
-		return "BoardVo [no=" + no + ", title=" + title + ", name=" + name + ", hit=" + hit + ", reg_date=" + reg_date
+		return "BoardVo [no=" + no + ", title=" + title + ", name=" + name + ", hit=" + hit_cnt + ", reg_date=" + reg_date
 				+ ", group_no=" + group_no + ", order_no=" + order_no + ", depth=" + depth + "]";
 	}
 	
